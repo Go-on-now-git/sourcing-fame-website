@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice NSH-2026-003 — Not So Holdings LLC</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@300;400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lato', sans-serif;
+    background: #f8f8f8;
+    color: #1a1a1a;
+    padding: 40px 20px;
+  }
+
+  .invoice-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.12);
+  }
+
+  /* Header */
+  .invoice-header {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .company-info h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #c9a84c;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .company-info .parent-entity {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+  }
+
+  .company-info p {
+    font-size: 0.85rem;
+    color: #ccc;
+    line-height: 1.8;
+  }
+
+  .invoice-meta {
+    text-align: right;
+  }
+
+  .invoice-meta .invoice-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #c9a84c;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .invoice-meta table {
+    font-size: 0.85rem;
+    color: #ccc;
+  }
+
+  .invoice-meta td:first-child {
+    text-align: right;
+    padding-right: 12px;
+    color: #888;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .invoice-meta td:last-child {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* Gold divider */
+  .gold-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #8b6914, #c9a84c, #f0d060, #c9a84c, #8b6914);
+  }
+
+  /* Billing section */
+  .billing-section {
+    padding: 40px 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .billing-block h3 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 10px;
+  }
+
+  .billing-block p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #333;
+  }
+
+  .billing-block strong {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* Complimentary badge */
+  .complimentary-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+    color: #c9a84c;
+    border: 1px solid #c9a84c;
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    border-radius: 2px;
+  }
+
+  /* Line items */
+  .line-items {
+    padding: 0 50px;
+    margin: 30px 0;
+  }
+
+  .line-items table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .line-items thead th {
+    padding: 10px 14px;
+    background: #0a0a0a;
+    color: #c9a84c;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .line-items thead th:last-child,
+  .line-items thead th:nth-child(3),
+  .line-items thead th:nth-child(4) {
+    text-align: right;
+  }
+
+  .line-items tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .line-items tbody tr:hover {
+    background: #fafafa;
+  }
+
+  .line-items tbody td {
+    padding: 14px;
+    font-size: 0.9rem;
+    color: #333;
+    vertical-align: top;
+  }
+
+  .line-items tbody td:nth-child(3),
+  .line-items tbody td:nth-child(4),
+  .line-items tbody td:last-child {
+    text-align: right;
+  }
+
+  .line-items tbody td:first-child {
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+
+  .item-desc {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 3px;
+    font-weight: 400;
+  }
+
+  /* Totals */
+  .totals-section {
+    padding: 0 50px 30px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .totals-table {
+    width: 320px;
+  }
+
+  .totals-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .totals-table td {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  .totals-table td:last-child {
+    text-align: right;
+  }
+
+  .totals-table .subtotal-row td {
+    border-top: 1px solid #eee;
+  }
+
+  .totals-table .discount-row td {
+    color: #2a7a2a;
+  }
+
+  .totals-table .total-row {
+    background: #0a0a0a;
+  }
+
+  .totals-table .total-row td {
+    color: #c9a84c;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 14px;
+  }
+
+  .totals-table .due-row td {
+    font-size: 0.75rem;
+    color: #888;
+    text-align: center;
+    padding-top: 12px;
+    font-style: italic;
+  }
+
+  .totals-table .due-row td:last-child {
+    text-align: center;
+  }
+
+  /* Notes */
+  .notes-section {
+    padding: 30px 50px;
+    background: #f8f8f8;
+    border-top: 1px solid #eee;
+  }
+
+  .notes-section h3 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    margin-bottom: 10px;
+  }
+
+  .notes-section p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  /* Footer */
+  .invoice-footer {
+    background: #0a0a0a;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .invoice-footer p {
+    font-size: 0.75rem;
+    color: #666;
+  }
+
+  .invoice-footer .tagline {
+    font-family: 'Playfair Display', serif;
+    color: #c9a84c;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+
+  /* Print styles */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .invoice-wrapper { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="invoice-wrapper">
+
+  <!-- Header -->
+  <div class="invoice-header">
+    <div class="company-info">
+      <h1>NOT SO HOLDINGS LLC</h1>
+      <div class="parent-entity">Not So Incorporated Ministries | 508(c)(1)(a)</div>
+      <p>
+        26444 Chianina Dr<br>
+        Wesley Chapel, FL 33544<br>
+        justin@notsoinc.com<br>
+        (352) 698-7333<br>
+        nsai.tech
+      </p>
+    </div>
+    <div class="invoice-meta">
+      <span class="invoice-label">INVOICE</span>
+      <table>
+        <tr>
+          <td>Invoice #</td>
+          <td>NSH-2026-003</td>
+        </tr>
+        <tr>
+          <td>Date</td>
+          <td>September 18, 2026</td>
+        </tr>
+        <tr>
+          <td>Due Date</td>
+          <td>N/A — Complimentary</td>
+        </tr>
+        <tr>
+          <td>Project</td>
+          <td>SOURCING F.A.M.E</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="gold-bar"></div>
+
+  <!-- Billing Info -->
+  <div class="billing-section">
+    <div class="billing-block">
+      <h3>Billed To</h3>
+      <p>
+        <strong>Lililouhoh</strong><br>
+        SOURCING F.A.M.E<br>
+        Sourcing Featuring Artists Motivating Elites<br>
+        Studio: (272) 446-4216<br>
+        contact@sourcingfame.com
+      </p>
+      <span class="complimentary-badge">⭐ Complimentary Client</span>
+    </div>
+    <div class="billing-block">
+      <h3>Project Details</h3>
+      <p>
+        <strong>Deliverable:</strong> Premium Website — Luxury POC Prototype<br>
+        <strong>URL:</strong> https://fame-prototype.nsai.tech<br>
+        <strong>Stack:</strong> HTML/CSS/JS — Static, self-contained<br>
+        <strong>Status:</strong> Delivered for Review<br>
+        <strong>Handoff:</strong> ZIP package + GitHub
+      </p>
+    </div>
+    <div class="billing-block">
+      <h3>Payment Terms</h3>
+      <p>
+        <strong>Terms:</strong> Complimentary — $0 Due<br>
+        <strong>Program:</strong> NSAI Client Preview<br>
+        <strong>Valid Value:</strong> $1,400.00 USD<br>
+        <strong>Discount:</strong> 100% (Pro Bono)<br>
+        <strong>Processed by:</strong> NSAI Automation
+      </p>
+    </div>
+  </div>
+
+  <!-- Line Items -->
+  <div class="line-items">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:45%">Service</th>
+          <th style="width:15%">Hours</th>
+          <th style="width:15%">Rate</th>
+          <th style="width:10%">Value</th>
+          <th style="width:15%">Charged</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            Web Design — Luxury Concept & Layout
+            <div class="item-desc">Full brand analysis, color system, typography, section architecture, luxury aesthetic development</div>
+          </td>
+          <td>2.0 hrs</td>
+          <td>$150/hr</td>
+          <td>$300.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Web Development — Single-Page Application Build
+            <div class="item-desc">HTML/CSS/JS build, responsive layout, all content sections (Podcast, Magazine, Beats, Artist Dev, Contact)</div>
+          </td>
+          <td>3.0 hrs</td>
+          <td>$150/hr</td>
+          <td>$450.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Premium Animation & UX Package
+            <div class="item-desc">Gold particle hero animations, glassmorphism cards, scroll-reveal effects, shimmer hover states, frosted glass nav</div>
+          </td>
+          <td>1.5 hrs</td>
+          <td>$150/hr</td>
+          <td>$225.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Client Communication & Feedback Hub
+            <div class="item-desc">Integrated prototype review panel, changelog, request vs. executive additions breakdown, interactive feedback submission</div>
+          </td>
+          <td>1.0 hr</td>
+          <td>$150/hr</td>
+          <td>$150.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Cloudflare Tunnel Deployment & Live Hosting
+            <div class="item-desc">Domain config, tunnel credentials, DNS routing, live preview at fame-prototype.nsai.tech</div>
+          </td>
+          <td>0.5 hr</td>
+          <td>$150/hr</td>
+          <td>$75.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Handoff Package — GitHub + ZIP
+            <div class="item-desc">Repo creation, asset bundle, deployment instructions, domain-ready deliverable</div>
+          </td>
+          <td>0.5 hr</td>
+          <td>$150/hr</td>
+          <td>$75.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            Project Management & Revisions
+            <div class="item-desc">Client communication, scope alignment, revision tracking via prototype feedback hub</div>
+          </td>
+          <td>0.5 hr</td>
+          <td>$150/hr</td>
+          <td>$75.00</td>
+          <td>$0.00</td>
+        </tr>
+        <tr>
+          <td>
+            <strong>NSAI Executive Technology Premium</strong>
+            <div class="item-desc">AI-powered design direction, autonomous deployment, NSAI-grade tooling and platform integration</div>
+          </td>
+          <td>—</td>
+          <td>Flat</td>
+          <td>$50.00</td>
+          <td>$0.00</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Totals -->
+  <div class="totals-section">
+    <div class="totals-table">
+      <table>
+        <tr class="subtotal-row">
+          <td>Subtotal</td>
+          <td>$1,400.00</td>
+        </tr>
+        <tr class="discount-row">
+          <td>✓ NSAI Client Preview Discount (100%)</td>
+          <td>− $1,400.00</td>
+        </tr>
+        <tr class="total-row">
+          <td>AMOUNT DUE</td>
+          <td>$0.00</td>
+        </tr>
+        <tr class="due-row">
+          <td colspan="2">Complimentary service — No payment required</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes-section">
+    <h3>Notes</h3>
+    <p>
+      This invoice is issued as a formal record of services provided to SOURCING F.A.M.E by Not So Holdings LLC 
+      under the NSAI Client Preview Program. The full value of $1,400.00 has been waived as a complimentary 
+      proof-of-concept engagement. This document may be used for your records as evidence of professional 
+      web development services received.<br><br>
+      <strong>Prototype URL:</strong> https://fame-prototype.nsai.tech — available for review and iteration.<br>
+      <strong>Next Steps:</strong> Review the prototype, provide feedback via the on-site hub, send remaining 
+      links/assets, and we'll finalize. Upon approval, your complete site package will be delivered for 
+      deployment to your own domain.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <div class="invoice-footer">
+    <p>Not So Holdings LLC · Wesley Chapel, FL · nsai.tech · justin@notsoinc.com</p>
+    <span class="tagline">#StayAbove — Optimized by Design</span>
+  </div>
+
+</div>
+
+</body>
+</html>
