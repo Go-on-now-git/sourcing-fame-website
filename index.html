@@ -1769,6 +1769,98 @@ footer {
 }
 
 #mobile-overlay.open { display: block; }
+
+/* ── Team Section ─────────────────────────────────── */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 50px;
+}
+
+@media (max-width: 900px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .team-grid { grid-template-columns: 1fr; }
+}
+
+.team-card {
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(201,168,76,0.2);
+}
+
+.team-monogram {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b6914, #c9a84c, #f0d060);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem;
+  color: #080808;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(201,168,76,0.4);
+}
+
+.team-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.team-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: #c9a84c;
+  margin-bottom: 16px;
+}
+
+.team-divider {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+  margin: 0 auto 16px;
+}
+
+.team-desc {
+  font-size: 0.85rem;
+  color: #aaa;
+  line-height: 1.8;
+}
+
+.team-desc strong {
+  color: #c9a84c;
+}
+
+.team-badge {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 4px 14px;
+  border: 1px solid rgba(201,168,76,0.5);
+  border-radius: 20px;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #c9a84c;
+  background: rgba(201,168,76,0.08);
+}
+
 </style>
 </head>
 <body>
@@ -1816,6 +1908,7 @@ footer {
           <li>Scroll-reveal animations on all sections</li>
           <li>This client communication panel — for real-time review feedback</li>
           <li>Interactive feedback form — send comments directly to NSAI</li>
+          <li>Leadership &amp; Team section — LiLLoUhOh (CEO), Nin Ja (VP), Justin DeMarco (Partner / DDMG &amp; SixTen), Ryan King (EDM Coordinator / Bass Bawlz), KrashLove (Event Planner &amp; Merchandise)</li>
         </ul>
       </div>
     </div>
@@ -1839,6 +1932,18 @@ footer {
           <label>Send a quick note to NSAI:</label>
           <textarea id="quick-feedback" placeholder="e.g. &quot;I love the hero section but can we make the font bigger?&quot; or &quot;Can we add a booking calendar?&quot; — anything goes!"></textarea>
           <button class="panel-send-btn" onclick="sendQuickFeedback()">Send to NSAI ✦</button>
+
+      <div class="panel-block" style="background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.4);border-radius:6px;padding:14px 16px;margin-top:10px;">
+        <h4 style="color:#c9a84c;font-size:0.78rem;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;">💛 Invoice & Billing</h4>
+        <p style="font-size:0.82rem;color:#ccc;line-height:1.7;">
+          This prototype was built <strong style="color:#c9a84c;">complimentary</strong> by 
+          <strong style="color:#fff;">Not So Holdings LLC / NSAI</strong> as part of our client preview program.<br>
+          <strong>Invoice:</strong> NSH-2026-003 &nbsp;|&nbsp; 
+          <strong>Full Value:</strong> $1,400.00 &nbsp;|&nbsp; 
+          <strong>Amount Due: <span style="color:#c9a84c;">$0.00</span></strong><br>
+          <em style="color:#888;font-size:0.76rem;">No payment required. Invoice on file for your records.</em>
+        </p>
+      </div>
           <div id="quick-feedback-status" style="font-size:0.78rem;text-align:center;margin-top:4px;min-height:20px;"></div>
         </div>
       </div>
@@ -1855,7 +1960,7 @@ footer {
 
     <ul class="nav-links" id="nav-links">
       <li><a href="#hero">Home</a></li>
-      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#team">Team</a></li><li><a href="#podcast">Podcast</a></li>
       <li><a href="#magazine">Magazine</a></li>
       <li><a href="#beats">Beats</a></li>
       <li><a href="#artist-dev">Artist Dev</a></li>
@@ -1949,6 +2054,71 @@ footer {
     </div>
   </div>
 </section>
+
+<div class="ornament">✦</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     LEADERSHIP / TEAM
+══════════════════════════════════════════════════════════ -->
+<section id="team">
+  <div class="container">
+    <p class="section-label reveal">The Collective</p>
+    <h2 class="section-title reveal">Who Runs It</h2>
+    <p class="section-subtitle reveal">Built by elites. Run by elites. Every role, every vision — intentional.</p>
+
+    <div class="team-grid reveal">
+
+      <!-- CEO -->
+      <div class="team-card glass-card">
+        <div class="team-monogram">L</div>
+        <p class="team-name">LiLLoUhOh</p>
+        <p class="team-title">Chief Executive Officer</p>
+        <div class="team-divider"></div>
+        <p class="team-desc">Founder &amp; visionary behind SOURCING F.A.M.E. Artist, producer, and driving force of the collective.</p>
+      </div>
+
+      <!-- VP -->
+      <div class="team-card glass-card">
+        <div class="team-monogram">N</div>
+        <p class="team-name">Nin Ja</p>
+        <p class="team-title">Vice President</p>
+        <div class="team-divider"></div>
+        <p class="team-desc">Strategic operations and leadership. Ensuring the mission is executed at the highest level across every vertical.</p>
+      </div>
+
+      <!-- Partner -->
+      <div class="team-card glass-card">
+        <div class="team-monogram">JD</div>
+        <p class="team-name">Justin DeMarco</p>
+        <p class="team-title">Partner</p>
+        <div class="team-divider"></div>
+        <p class="team-desc">Bringing the power of <strong>DDMG &amp; SixTen</strong> to the collective. Strategic partner driving growth and industry connections.</p>
+        <div class="team-badge">DDMG &amp; SixTen</div>
+      </div>
+
+      <!-- EDM Coordinator -->
+      <div class="team-card glass-card">
+        <div class="team-monogram">RK</div>
+        <p class="team-name">Ryan King</p>
+        <p class="team-title">EDM Coordinator</p>
+        <div class="team-divider"></div>
+        <p class="team-desc">Pioneering the electronic dimension of the collective. Leading production and coordination through <strong>Bass Bawlz</strong>.</p>
+        <div class="team-badge">Bass Bawlz</div>
+      </div>
+
+      <!-- Event Planner & Merch -->
+      <div class="team-card glass-card">
+        <div class="team-monogram">KL</div>
+        <p class="team-name">KrashLove</p>
+        <p class="team-title">Event Planner &amp; Merchandise</p>
+        <div class="team-divider"></div>
+        <p class="team-desc">Curating the live experience and brand presence. Every event, every drop — executed with precision and style.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <div class="ornament">◆</div>
 
