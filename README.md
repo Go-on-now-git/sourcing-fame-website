@@ -40,15 +40,5 @@ Black & gold aesthetic. Lavish, bold, elegant, sophisticated.
 3. Or: point your domain's DNS to a host and upload via FTP
 4. That's it — single HTML file, no server required
 
-## Still Needed Before Final Launch
 
-- [ ] Your actual podcast platform URLs
-- [ ] Business email address  
-- [ ] Merch store URL
-- [ ] Partner podcast/magazine/website links
-
-Send those to NSAI and the final version will be updated within the hour.
-
----
-
-*Not So Holdings LLC · #StayAbove · nsai.tech*
+X
