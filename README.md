@@ -40,5 +40,4 @@ Black & gold aesthetic. Lavish, bold, elegant, sophisticated.
 3. Or: point your domain's DNS to a host and upload via FTP
 4. That's it — single HTML file, no server required
 
-
-X
+*Not So Holdings LLC · #StayAbove · nsai.tech*
